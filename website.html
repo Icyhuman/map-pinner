@@ -7,6 +7,8 @@
     </head>
     <body>
         <p>yuck</p>
+        <img src="imgs/tempshit.png" id="gabagool">
+    <!-- Importing the script caused an error. If this was important and official I might fix it, but this is a makeshift tool and putting the script here works-->
         <script type="module">
             const wsUri = "ws://localhost:8008";
             const socket = new WebSocket(wsUri);
@@ -17,12 +19,20 @@
             });
             socket.addEventListener("message", (event) => {
               console.log("Message from server ", event.data);
-              socket.send("fuckyou!");
+              //socket.send("fuckyou!");
             });
             socket.addEventListener("close", (event) => {
                 console.log('fucj');
             });
+            function heclickedwhoa(){
+                socket.send('Oioioi he clicked');
+                console.log('clic');
+            };
+            var imag= document.getElementById("gabagool")
+            imag.addEventListener("click",() => {heclickedwhoa();})
+
 
         </script>
+
     </body>
 </html>

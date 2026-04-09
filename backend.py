@@ -1,8 +1,12 @@
 import asyncio
 import websockets
 
+
 async def echo(websocket):
+    x=0
     async for message in websocket:
+        print(x)
+        x+=1
         print(message)
         await websocket.send(message)
 
@@ -14,4 +18,5 @@ async def main():
 
 
 if __name__ == "__main__":
+    x=0
     asyncio.run(main())

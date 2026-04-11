@@ -7,7 +7,11 @@
     </head>
     <body>
         <p>yuck</p>
-        <img src="imgs/tempshit.png" id="gabagool">
+        <div style="height: 720px; width: 1280; border: 10px;">
+        <img src="imgs/mapnomarker.png" id="gabagool" style="position: absolute;">
+        <img src="imgs/pin.png" id="apin" style="position: absolute; left: 100px; top: 432px;">
+
+        </div>
     <!-- Importing the script caused an error. If this was important and official I might fix it, but this is a makeshift tool and putting the script here works-->
         <script type="module">
             const wsUri = "ws://localhost:8008";
@@ -27,9 +31,19 @@
             function heclickedwhoa(){
                 socket.send('Oioioi he clicked');
                 console.log('clic');
+                let x = event.clientX;
+                let y = event.clientY;
+                let xpos=x+'px'
+                let ypos=y+'px'
+                pin.style.left=xpos
+                pin.style.top=ypos
+                console.log(xpos);
+                console.log(ypos);
             };
             var imag= document.getElementById("gabagool")
-            imag.addEventListener("click",() => {heclickedwhoa();})
+            imag.addEventListener("click",(event) => {heclickedwhoa(event);})
+            let pin=document.getElementById("apin");
+            pin.style.left='500px'
 
 
         </script>

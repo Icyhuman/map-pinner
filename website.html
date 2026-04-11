@@ -7,9 +7,9 @@
     </head>
     <body>
         <p>yuck</p>
-        <div style="height: 720px; width: 1280; border: 10px;">
-        <img src="imgs/mapnomarker.png" id="gabagool" style="position: absolute;">
-        <img src="imgs/pin.png" id="apin" style="position: absolute; left: 100px; top: 432px;">
+        <div id="cont"  style="height: 720px; width: 1280; border: 10px;">
+        <img src="imgs/mapnomarker.png" id="gabagool" style="position: absolute; z-index: 1;">
+        <img src="imgs/pin.png" id="apin" style="position: absolute; left: 100px; top: 432px; z-index: 3;">
 
         </div>
     <!-- Importing the script caused an error. If this was important and official I might fix it, but this is a makeshift tool and putting the script here works-->
@@ -39,7 +39,22 @@
                 pin.style.top=ypos
                 console.log(xpos);
                 console.log(ypos);
+                gpin();
             };
+            function gpin() {
+              // create a new div element
+              const gpin = document.createElement("img");
+
+              // and give it some content
+              gpin.style.left=pin.style.left;
+              gpin.style.top=pin.style.top;
+              gpin.src="imgs/gpin.png";
+              gpin.style.position='absolute'
+              gpin.style.zIndex='2';
+              box.insertBefore(gpin, apin);
+            }
+            const box=document.getElementById("cont");
+
             var imag= document.getElementById("gabagool")
             imag.addEventListener("click",(event) => {heclickedwhoa(event);})
             let pin=document.getElementById("apin");

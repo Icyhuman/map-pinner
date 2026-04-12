@@ -1,14 +1,17 @@
 import asyncio
 import websockets
+import os
 
 
 async def echo(websocket):
-    x=0
     async for message in websocket:
-        print(x)
-        x+=1
+        command=message.split(',')[0]
+        if command=='images':
+            message=listfiles()
+            await websocket.send(message)
+
         print(message)
-        await websocket.send(message)
+        #await websocket.send(message)
 
 
 async def main():
@@ -16,7 +19,18 @@ async def main():
         print('Fuck')
         await server.serve_forever()
 
+def listfiles():
+    imglist=os.listdir('screenshots')
+    string=''
+    for name in imglist:
+        string=string+'screenshots/'+name+','
+
+    
+    return string[:-1]
+
 
 if __name__ == "__main__":
     x=0
+    #listfiles()
     asyncio.run(main())
+

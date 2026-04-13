@@ -25,9 +25,9 @@
                 console.log('shit opened'),
                 socket.send("images,please");
             });
-            socket.addEventListener("message", (event) => {
-              console.log("Message from server ", event.data);
-              setupscreenshots(event.data)
+            socket.addEventListener("message", (event) => { //hardcoded cause it is the only thing we get from backend
+              console.log("Message from server ", event.data); //Needs change if we want to fetch multiple things
+              setupscreenshots(event.data) //But this is a simple tool for a simple purpose so hardcoded it is
               //socket.send("fuckyou!");
             });
             socket.addEventListener("close", (event) => {
@@ -59,9 +59,11 @@
                 gpin()
                 var x = pin.style.left;
                 var y = pin.style.top;
-                var src = screenshot.src
+                var src = screenshot.src.split('pinner/')[1]
+                console.log(src)
                 let string = 'pin,'+x+','+y+','+src
                 console.log(string)
+                socket.send(string)
 
             }
             const box=document.getElementById("cont");

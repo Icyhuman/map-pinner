@@ -12,6 +12,10 @@
 
         </div>
         <button id="attach">attach</button>
+        <button id="prev">prev</button>
+        <button id="next">next</button>
+        <p> </p>
+        <img src="imgs/tempshit.png" id="screenshot">
     <!-- Importing the script caused an error. If this was important and official I might fix it, but this is a makeshift tool and putting the script here works-->
         <script type="module">
             const wsUri = "ws://localhost:8008";
@@ -23,6 +27,7 @@
             });
             socket.addEventListener("message", (event) => {
               console.log("Message from server ", event.data);
+              setupscreenshots(event.data)
               //socket.send("fuckyou!");
             });
             socket.addEventListener("close", (event) => {
@@ -52,9 +57,10 @@
             }
             function attach() {
                 gpin()
-                let x = pin.style.left;
-                let y = pin.style.top;
-                let string = 'pin,'+x+','+y+','+'srcgoeshere'
+                var x = pin.style.left;
+                var y = pin.style.top;
+                var src = screenshot.src
+                let string = 'pin,'+x+','+y+','+src
                 console.log(string)
 
             }
@@ -65,7 +71,34 @@
             var btnn= document.getElementById("attach")
             btnn.addEventListener("click",() => {attach();})
             let pin=document.getElementById("apin");
-            pin.style.left='500px'
+
+
+            let screenshots=[];
+            let sindex=0;
+            const screenshot=document.getElementById("screenshot");
+            function setupscreenshots(info){
+                screenshots = info.split(",")
+                console.log(screenshots)
+                screenshot.src=screenshots[sindex]
+            }
+            function slideshow(move){
+                var len=screenshots.length
+                sindex=sindex+move;
+                if (sindex==len){
+                    console.log(sindex)
+                    sindex=0
+                }
+                if (sindex==-1){
+                    console.log(sindex)
+                    sindex=len-1
+                }
+                screenshot.src=screenshots[sindex]
+                console.log(sindex)
+            }
+            var prev= document.getElementById("prev")
+            prev.addEventListener("click",() => {slideshow(-1);})
+            var next= document.getElementById("next")
+            next.addEventListener("click",() => {slideshow(1);})
 
 
         </script>

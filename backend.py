@@ -9,6 +9,8 @@ async def echo(websocket):
         if command=='images':
             message=listfiles()
             await websocket.send(message)
+        if command=='pin':
+            savepin(message)
 
         print(message)
         #await websocket.send(message)
@@ -28,6 +30,9 @@ def listfiles():
     
     return string[:-1]
 
+def savepin(data):
+    with open('pins.txt', 'a') as file:
+        file.write(data[4:]+'\n')
 
 if __name__ == "__main__":
     x=0

@@ -3,12 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <title>minch yaddle</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
         <!--<script type="module" src="script.js"></script>-->
     </head>
     <body>
         <div id="cont"  style="height: 720px; width: 1280; border: 10px;">
         <img src="imgs/mapnomarker.png" id="gabagool" style="position: absolute; z-index: 1;">
-        <img src="imgs/pin.png" id="apin" style="position: absolute; left: 100px; top: 432px; z-index: 3;">
+        <img src="imgs/pin.png" id="apin" class="apin">
 
         </div>
         <button id="attach">attach</button>
@@ -50,6 +51,7 @@
               // and give it some content
               gpin.style.left=pin.style.left;
               gpin.style.top=pin.style.top;
+              gpin.className='gpin'
               gpin.src="imgs/gpin.png";
               gpin.style.position='absolute'
               gpin.style.zIndex='2';

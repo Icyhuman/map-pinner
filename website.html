@@ -28,8 +28,16 @@
             });
             socket.addEventListener("message", (event) => { //hardcoded cause it is the only thing we get from backend
               console.log("Message from server ", event.data); //Needs change if we want to fetch multiple things
-              setupscreenshots(event.data) //But this is a simple tool for a simple purpose so hardcoded it is
-              //socket.send("fuckyou!");
+              console.log(event.data.slice(0,3)) //But this is a simple tool for a simple purpose so hardcoded it is
+              if(event.data.slice(0,3)=='res'){
+                let parts=event.data.split('MyCoolSeparator')
+                console.log(parts)
+                setupscreenshots(parts[1])
+                resumepins(parts[2])
+              }
+              else{
+                setupscreenshots(event.data)
+              }
             });
             socket.addEventListener("close", (event) => {
                 console.log('fucj');
@@ -84,6 +92,17 @@
                 screenshots = info.split(",")
                 console.log(screenshots)
                 screenshot.src=screenshots[sindex]
+            }
+            function resumepins(pins){
+                let pinlist=pins.split(',')
+                console.log(pinlist)
+                for (pins in pinlist){
+                    let loc=pinlist[pins].split('  ')
+                    console.log(loc)
+                    pin.style.left=loc[0];
+                    pin.style.top=loc[1];
+                    gpin()
+                }
             }
             function slideshow(move){
                 var len=screenshots.length

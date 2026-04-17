@@ -1,0 +1,33 @@
+
+img.pin{
+    position: absolute; z-index: 3; height: 34px; width:25px;
+}
+
+@keyframes pinhover{
+  0%{transform:scale(1) translateX(0px) translateY(0px);  }
+
+  100%{transform:scale(1.2) translateX(-1px) translateY(-3px);  }
+}
+img.pin:hover{
+    animation: pinhover 0.3s linear;animation-fill-mode: forwards;
+}
+
+img.box{
+    z-index: 4; display: none; position: absolute; left: 8px; top: 8px;
+    animation: boxappear 0.3s linear;animation-fill-mode: forwards;
+}
+
+img.boxgo{
+    animation: boxgone 0.3s linear;animation-fill-mode: forwards;
+}
+
+@keyframes boxappear{
+  0%{transform:scale(0) ;  }
+
+  100%{transform:scale(1) ;  }
+}
+@keyframes boxgone{
+  0%{transform:scale(1) ;  }
+
+  100%{transform:scale(0) ;  }
+}

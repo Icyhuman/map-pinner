@@ -10,7 +10,7 @@ img.pin{
 @keyframes pinhover{
   0%{transform:scale(1) translateX(0px) translateY(0px);  }
 
-  100%{transform:scale(1.2) translateX(-1px) translateY(-3px);  }
+  100%{transform:scale(1.2) translateX(0px) translateY(-3px);  }
 }
 img.pin:hover{
     animation: pinhover 0.3s linear;animation-fill-mode: forwards;

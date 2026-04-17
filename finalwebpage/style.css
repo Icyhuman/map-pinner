@@ -1,3 +1,7 @@
+body{
+    background-color: lavender;
+}
+
 
 img.pin{
     position: absolute; z-index: 3; height: 34px; width:25px;

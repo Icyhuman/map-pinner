@@ -7,6 +7,10 @@ img.pin{
     position: absolute; z-index: 3; height: 34px; width:25px;
 }
 
+div.cont{
+    height: 720px; width: 1280; position: relative;
+}
+
 @keyframes pinhover{
   0%{transform:scale(1) translateX(0px) translateY(0px);  }
 
